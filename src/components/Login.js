@@ -6,14 +6,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { Avatar_Url } from "../utils/constants";
+import { Avatar_Url, BG_Image } from "../utils/constants";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
   const [msg, setMsg] = useState(null);
@@ -97,13 +95,15 @@ const Login = () => {
   const handleLogin = () => {
     setIsLogin(!isLogin);
   };
+
+  
   return (
     <div>
       <Header />
       <div>
         <img
           className="absolute w-full h-full object-cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/dae1f45f-c2c5-4a62-8d58-6e1b0c6b2d8e/6d1fb8a4-5844-42a4-9b01-1c6c128acf19/IN-en-20240827-TRIFECTA-perspective_WEB_c292a608-cdc6-4686-8dc8-405bfcf753af_large.jpg"
+          src={BG_Image}
           alt="Background"
         />
       </div>

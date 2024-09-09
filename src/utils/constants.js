@@ -12,3 +12,9 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOWU3Yzc5MDRkMmI2YTQ3YzY1OGU2YjZjOTYwZjViZSIsIm5iZiI6MTcyNTQyNjg2OC42ODcxMjcsInN1YiI6IjY2ZDdlYjZlNDYzYTFlMTFiMDYwNDc3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xxxBaA76b5g2CntViIRqhv4UbqFFJOQFz6T7eigocbw",
   },
 };
+
+export const BG_Image="https://assets.nflxext.com/ffe/siteui/vlv3/dae1f45f-c2c5-4a62-8d58-6e1b0c6b2d8e/6d1fb8a4-5844-42a4-9b01-1c6c128acf19/IN-en-20240827-TRIFECTA-perspective_WEB_c292a608-cdc6-4686-8dc8-405bfcf753af_large.jpg";
+
+export const OPENAI_API_KEY="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";
+
+export const GEMINI_API_KEY="AIzaSyDxdEE8E9PRCR3KaN6f8zxxuYjKr_EO8Ro";
