@@ -1,8 +1,9 @@
-name: Deploy Node.js App with GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -10,60 +11,32 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
-    steps:
-      # Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      # Set up Node.js
+    env:
+      REACT_APP_TMDB_API_KEY: ${{ secrets.REACT_APP_TMDB_API_KEY }}
+      REACT_APP_OPENAI_API_KEY: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
+      REACT_APP_GEMINI_API_KEY: ${{ secrets.REACT_APP_GEMINI_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '16'
 
-      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Install missing Babel plugin
-      - name: Install Babel plugin for private property in object
-        run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
-
-      # Set CI=false to avoid treating warnings as errors
-      - name: Set CI to false to avoid treating warnings as errors
-        run: echo "CI=false" >> $GITHUB_ENV
-
-      # Build the application
-      - name: Build the application
+      - name: Build the project
         run: npm run build
 
-      # Debug the build directory
-      - name: Debug build directory
-        run: ls -la ./build
-
-      # Upload build artifacts
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./build
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
