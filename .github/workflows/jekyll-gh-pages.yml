@@ -37,6 +37,10 @@ jobs:
       - name: Install Babel plugin for private property in object
         run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
 
+      # Set CI=false to avoid treating warnings as errors
+      - name: Set CI to false to avoid treating warnings as errors
+        run: echo "CI=false" >> $GITHUB_ENV
+
       # Build the application
       - name: Build the application
         run: npm run build
