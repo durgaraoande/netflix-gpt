@@ -13,7 +13,7 @@ export const API_OPTIONS = {
   },
 };
 
-export const BG_Image="https://assets.nflxext.com/ffe/siteui/vlv3/dae1f45f-c2c5-4a62-8d58-6e1b0c6b2d8e/6d1fb8a4-5844-42a4-9b01-1c6c128acf19/IN-en-20240827-TRIFECTA-perspective_WEB_c292a608-cdc6-4686-8dc8-405bfcf753af_large.jpg";
+export const BG_Image="https://i.pinimg.com/736x/36/57/14/365714987436299a240b33b20fe35474.jpg";
 
 export const OPENAI_API_KEY=process.env.REACT_APP_OPENAI_API_KEY;
 
